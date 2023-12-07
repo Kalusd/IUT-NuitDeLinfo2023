@@ -1,0 +1,128 @@
+{
+  "author": "",
+  "category": "",
+  "extensionNamespace": "",
+  "fullName": "Floating object",
+  "helpPath": "",
+  "iconUrl": "",
+  "name": "FloatingObject",
+  "previewIconUrl": "",
+  "shortDescription": "Move an fade an object.",
+  "version": "",
+  "description": "",
+  "tags": [],
+  "authorIds": [],
+  "dependencies": [],
+  "eventsFunctions": [],
+  "eventsBasedBehaviors": [
+    {
+      "description": "Move an fade an object.",
+      "fullName": "Floating object",
+      "name": "FloatingObject",
+      "objectType": "",
+      "eventsFunctions": [
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPostEvents",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Tween::AddObjectOpacityTween"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Tween",
+                    "\"_FloatingObject.Fade\"",
+                    "0",
+                    "\"easeOutQuad\"",
+                    "1000 * Object.Behavior::PropertyDuration()",
+                    "yes"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::AddObjectPositionYTween"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Tween",
+                    "\"_FloatingObject.Move\"",
+                    "Object.Y() + Object.Behavior::PropertyDeltaY()",
+                    "\"easeOutCubic\"",
+                    "1000 * Object.Behavior::PropertyDuration() / 3",
+                    "no"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "FloatingObject::FloatingObject",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "Behavior",
+          "label": "Tween",
+          "description": "",
+          "group": "",
+          "extraInformation": [
+            "Tween::TweenBehavior"
+          ],
+          "hidden": false,
+          "name": "Tween"
+        },
+        {
+          "value": "1.5",
+          "type": "Number",
+          "unit": "Second",
+          "label": "Duration",
+          "description": "",
+          "group": "",
+          "extraInformation": [],
+          "hidden": false,
+          "name": "Duration"
+        },
+        {
+          "value": "-25",
+          "type": "Number",
+          "unit": "Pixel",
+          "label": "Displacement on Y axis",
+          "description": "",
+          "group": "",
+          "extraInformation": [],
+          "hidden": false,
+          "name": "DeltaY"
+        }
+      ],
+      "sharedPropertyDescriptors": []
+    }
+  ],
+  "eventsBasedObjects": []
+}

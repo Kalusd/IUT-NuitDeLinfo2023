@@ -1,0 +1,964 @@
+{
+  "firstLayout": "GameScene",
+  "gdVersion": {
+    "build": 99,
+    "major": 4,
+    "minor": 0,
+    "revision": 0
+  },
+  "properties": {
+    "adaptGameResolutionAtRuntime": true,
+    "antialiasingMode": "MSAA",
+    "antialisingEnabledOnMobile": false,
+    "folderProject": true,
+    "orientation": "landscape",
+    "packageName": "com.example.hexagoncitybuilder",
+    "pixelsRounding": false,
+    "projectUuid": "a8b4044b-b2a2-4c66-a867-424b0b453d30",
+    "scaleMode": "linear",
+    "sizeOnStartupMode": "",
+    "templateSlug": "tile-based-city-builder",
+    "useExternalSourceFiles": false,
+    "version": "1.0.0",
+    "name": "GreenUtopia",
+    "description": "A tile based city builder example that shows users how to select, deselect, and purchase building types. As well as showing users how to check how many of an instance of an object is in scene, in order to calculate cost and income based on the type of buildings.",
+    "author": "",
+    "windowWidth": 1280,
+    "windowHeight": 720,
+    "latestCompilationDirectory": "",
+    "maxFPS": 60,
+    "minFPS": 20,
+    "verticalSync": false,
+    "platformSpecificAssets": {
+      "android-icon-144": "android-icon-144.png",
+      "android-icon-192": "android-icon-192.png",
+      "android-icon-36": "android-icon-36.png",
+      "android-icon-48": "android-icon-48.png",
+      "android-icon-72": "android-icon-72.png",
+      "android-icon-96": "android-icon-96.png",
+      "android-windowSplashScreenAnimatedIcon": "android-windowSplashScreenAnimatedIcon.png",
+      "desktop-icon-512": "desktop-icon-512.png",
+      "ios-icon-100": "ios-icon-100.png",
+      "ios-icon-1024": "ios-icon-1024.png",
+      "ios-icon-114": "ios-icon-114.png",
+      "ios-icon-120": "ios-icon-120.png",
+      "ios-icon-144": "ios-icon-144.png",
+      "ios-icon-152": "ios-icon-152.png",
+      "ios-icon-167": "ios-icon-167.png",
+      "ios-icon-180": "ios-icon-180.png",
+      "ios-icon-20": "ios-icon-20.png",
+      "ios-icon-29": "ios-icon-29.png",
+      "ios-icon-40": "ios-icon-40.png",
+      "ios-icon-50": "ios-icon-50.png",
+      "ios-icon-57": "ios-icon-57.png",
+      "ios-icon-58": "ios-icon-58.png",
+      "ios-icon-60": "ios-icon-60.png",
+      "ios-icon-72": "ios-icon-72.png",
+      "ios-icon-76": "ios-icon-76.png",
+      "ios-icon-80": "ios-icon-80.png",
+      "ios-icon-87": "ios-icon-87.png",
+      "liluo-thumbnail": "preview.png"
+    },
+    "loadingScreen": {
+      "backgroundColor": 0,
+      "backgroundFadeInDuration": 0.2,
+      "backgroundImageResourceName": "",
+      "gdevelopLogoStyle": "light",
+      "logoAndProgressFadeInDuration": 0.2,
+      "logoAndProgressLogoFadeInDelay": 0.2,
+      "minDuration": 1.5,
+      "progressBarColor": 16777215,
+      "progressBarHeight": 20,
+      "progressBarMaxWidth": 200,
+      "progressBarMinWidth": 40,
+      "progressBarWidthPercent": 30,
+      "showGDevelopSplash": true,
+      "showProgressBar": true
+    },
+    "watermark": {
+      "placement": "bottom-left",
+      "showWatermark": true
+    },
+    "authorIds": [],
+    "authorUsernames": [],
+    "categories": [],
+    "playableDevices": [],
+    "extensionProperties": [],
+    "platforms": [
+      {
+        "name": "GDevelop JS platform"
+      }
+    ],
+    "currentPlatform": "GDevelop JS platform"
+  },
+  "resources": {
+    "resources": [
+      {
+        "file": "assets/ArchitectsDaughter.ttf",
+        "kind": "font",
+        "metadata": "",
+        "name": "ArchitectsDaughter.ttf",
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Menu buttons/ab812c7d15ad3474b6e55761235713b68f34374f3f064d1b8685ed46720df2f8_ArchitectsDaughter.ttf",
+          "name": "ArchitectsDaughter.ttf"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/GRass.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "GRass.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Trees.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Trees.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Vingette.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Vingette.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "file": "assets/Boop.wav",
+        "kind": "audio",
+        "metadata": "{\"jfxr\":{\"data\":\"{\\\"_version\\\":1,\\\"_name\\\":\\\"Jump 1\\\",\\\"_locked\\\":[],\\\"sampleRate\\\":44100,\\\"attack\\\":0.06573617961083933,\\\"sustain\\\":0.0555829203131295,\\\"sustainPunch\\\":0,\\\"decay\\\":0.025232395483004266,\\\"tremoloDepth\\\":0,\\\"tremoloFrequency\\\":57.59962562400313,\\\"frequency\\\":31.817203708446918,\\\"frequencySweep\\\":626.8550795126068,\\\"frequencyDeltaSweep\\\":1034.042316151794,\\\"repeatFrequency\\\":0,\\\"frequencyJump1Onset\\\":33,\\\"frequencyJump1Amount\\\":0,\\\"frequencyJump2Onset\\\":66,\\\"frequencyJump2Amount\\\":0,\\\"harmonics\\\":0,\\\"harmonicsFalloff\\\":0.5,\\\"waveform\\\":\\\"sine\\\",\\\"interpolateNoise\\\":true,\\\"vibratoDepth\\\":640,\\\"vibratoFrequency\\\":2.5200696354612817,\\\"squareDuty\\\":0,\\\"squareDutySweep\\\":-15,\\\"flangerOffset\\\":0,\\\"flangerOffsetSweep\\\":0,\\\"bitCrush\\\":16,\\\"bitCrushSweep\\\":0,\\\"lowPassCutoff\\\":22050,\\\"lowPassCutoffSweep\\\":0,\\\"highPassCutoff\\\":0,\\\"highPassCutoffSweep\\\":0,\\\"compression\\\":1,\\\"normalization\\\":true,\\\"amplification\\\":100}\",\"name\":\"Boop\"}}",
+        "name": "Boop.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": true,
+        "preloadInCache": false,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/House.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "House.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Lumber.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Lumber.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Mine.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Mine.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/preview.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "preview.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/desktop-icon-512.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "desktop-icon-512.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/android-icon-192.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "android-icon-192.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/android-icon-144.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "android-icon-144.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/android-icon-96.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "android-icon-96.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/android-icon-72.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "android-icon-72.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/android-icon-48.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "android-icon-48.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/android-icon-36.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "android-icon-36.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/android-windowSplashScreenAnimatedIcon.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "android-windowSplashScreenAnimatedIcon.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-1024.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-1024.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-180.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-180.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-167.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-167.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-152.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-152.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-144.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-144.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-120.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-120.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-114.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-114.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-100.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-100.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-87.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-87.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-80.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-80.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-76.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-76.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-72.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-72.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-60.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-60.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-58.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-58.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-57.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-57.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-50.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-50.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-40.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-40.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-29.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-29.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/ios-icon-20.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ios-icon-20.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/House2.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\House.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/HouseSelected.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\HouseSelected.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Mine2.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Mine.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/MineSelected.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\MineSelected.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Lumber2.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Lumber.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/LumberSelected.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\LumberSelected.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Dot Bar Green Border.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Dot Bar Green Border.png",
+        "smoothed": false,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Resource bars/pixel art/e0754c6008a7f3ec35ce32d663263982cd7a67f91974977d1c1247b90891b1b9_Dot Bar Green Border.png",
+          "name": "Dot Bar Green Border.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Dot Bar Green Fill Bar.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Dot Bar Green Fill Bar.png",
+        "smoothed": false,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Resource bars/pixel art/11956f33bb9a6ca4997feced357ff80d8b2597367951d4ab34cd67d5a2d8b054_Dot Bar Green Fill Bar.png",
+          "name": "Dot Bar Green Fill Bar.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Green Button_Hovered.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Green Button_Hovered.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Menu buttons/bff6adc488c7379b21ceba34e9104e861791b2fbb54b4aae167fe90115b92fa3_Green Button_Hovered.png",
+          "name": "Green Button_Hovered.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Green Button_Idle.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Green Button_Idle.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Menu buttons/f46d20e99495562ee66ee2f26defdb0788588184bd30b1f7b951ae728ce63d2a_Green Button_Idle.png",
+          "name": "Green Button_Idle.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Green Button_Pressed.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Green Button_Pressed.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Menu buttons/ecb33703984d3107196efce7335025d7ec104351fe8cdeb581c73fe0b8038c34_Green Button_Pressed.png",
+          "name": "Green Button_Pressed.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/NewSprite.png",
+        "kind": "image",
+        "metadata": "{\"extension\":\".png\"}",
+        "name": "NewSprite",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/NewSprite2.png",
+        "kind": "image",
+        "metadata": "{\"extension\":\".png\"}",
+        "name": "NewSprite2",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Config.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Config.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/49c02b78cfcb8e5a9c14acc334011b64a703d86f268342a41d0b5cc0422b3fca_Config.png",
+          "name": "Config.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Download.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Download.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/5b2ee5b1fafed5c2f63450c0275477135de717fbf3f34ebb21705267cf5c9b00_Download.png",
+          "name": "Download.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Apply.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Apply.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/b532019bfd40b917896666eeddd65a565dae010341e8459b699c68fe7161a74b_Apply.png",
+          "name": "Apply.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Buy.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Buy.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/5ec1c0d15a261217283ece37c38f0ca24ca1b661e098aa141e190ec2e77740d1_Buy.png",
+          "name": "Buy.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Back.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Back.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/de6cc82c7103d6eb20a89c47f994535d02d3db6fe6717677231047af76407882_Back.png",
+          "name": "Back.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Ads.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Ads.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/6e866baa20a4d85dca6e99c42790603520ea4c68a637cf43dcaa0ab757fcd434_Ads.png",
+          "name": "Ads.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Large Buy Button.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Large Buy Button.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/2764c9437fd4708432f1c552bfd6b449ab04199bb92529008a251191b31a086b_Large Buy Button.png",
+          "name": "Large Buy Button.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Large Exit Button.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Large Exit Button.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/ee09bfd4171613d3e2e06b74cbd5ca525fec2a31dc4577e72399b376344626e1_Large Exit Button.png",
+          "name": "Large Exit Button.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Large Play Button.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Large Play Button.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/1b44e72d142f82a90893fb8162e9a172d574a92512ce5fadec5a8778cbae1d99_Large Play Button.png",
+          "name": "Large Play Button.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Left arrow.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Left arrow.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/18324e1b75ef7a340433b25a131f8597d3005d74a158a7d90a96d52bc1011241_Left arrow.png",
+          "name": "Left arrow.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Heart.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Heart.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/1ace97bdca6a1bc21048bf85eeee0f0a2627425064a35dfbc558a5c0aab718b2_Heart.png",
+          "name": "Heart.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Help.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Help.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/7391cdecb14244e441921d628a17eaddfa6f2717bb209ca5238af8f4315bec0b_Help.png",
+          "name": "Help.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Next.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Next.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/422c901b9a2764004c7af15c9c6ed3829ca984ec024c482230e757bec2d488d8_Next.png",
+          "name": "Next.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Menu.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Menu.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/b609e60e111684ed212df3371066cb64fcab0176586ef93153e4b58241cbd96e_Menu.png",
+          "name": "Menu.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Retry.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Retry.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/cc0cb4e9134b2f362d8145f10a42d356d3f10bb6e432187d81c25f164099812c_Retry.png",
+          "name": "Retry.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Play.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Play.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/8d8c2e164a0b7182cb017d9f8e1f930a504b1f39276103b92e3b3c655b7a6175_Play.png",
+          "name": "Play.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Plus.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Plus.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/10a7b0588a4e76b0c3782ff53beb349c3d351a5eb94ec36eaf8ed0fcd064632b_Plus.png",
+          "name": "Plus.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Pause.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Pause.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/3665e9e3cbbae21705cb283d230ed1ac7f5ee0e178a0c5371fb98e51448c9fc0_Pause.png",
+          "name": "Pause.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Share.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Share.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/b8491ec2379b9663cc6231696393080c7b806cb406e753b0cf4099a4f48a55f0_Share.png",
+          "name": "Share.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Right arrow.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Right arrow.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/cf447ec45269c88d614a7e3964832435eaa938b7923ea542752f5b0b8bffdc28_Right arrow.png",
+          "name": "Right arrow.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/World.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "World.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/a9c415aee33569629c9fe6a852110af59fc3300896bac1f9635f57b67b9a20af_World.png",
+          "name": "World.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Star.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Star.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Interface/Casual Buttons Pack/30f87923cd1e890aa8c109827fd14abba5891d5defc78836269b605a37ddcfd5_Star.png",
+          "name": "Star.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Red Button With Shadow_Hovered.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Red Button With Shadow_Hovered.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Menu buttons/71ee2c8d8b72808c7f084252cd36c80c44bc07655a3729e5fe7459c634007e8a_Red Button With Shadow_Hovered.png",
+          "name": "Red Button With Shadow_Hovered.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Red Button With Shadow_Idle.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Red Button With Shadow_Idle.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Menu buttons/6c6bf020fb86d99a9ecc993f8b90064d73d757bc2408050cf353c84bc36f6be2_Red Button With Shadow_Idle.png",
+          "name": "Red Button With Shadow_Idle.png"
+        }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Red Button With Shadow_Pressed.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Red Button With Shadow_Pressed.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Menu buttons/b9ce526450d48adedb6875043465ae168fff1f6b01dd1ff7f43b7e7c1568cc21_Red Button With Shadow_Pressed.png",
+          "name": "Red Button With Shadow_Pressed.png"
+        }
+      },
+      {
+        "file": "assets/CantoraOne-Regular.ttf",
+        "kind": "font",
+        "metadata": "",
+        "name": "CantoraOne-Regular.ttf",
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Menu buttons/05b0c1364a92b436b86ca819e66b63480d1bc2fb399f6c0cf8bffbf8199ccc2a_CantoraOne-Regular.ttf",
+          "name": "CantoraOne-Regular.ttf"
+        }
+      }
+    ],
+    "resourceFolders": []
+  },
+  "objects": [],
+  "objectsFolderStructure": {
+    "folderName": "__ROOT"
+  },
+  "objectsGroups": [],
+  "variables": [],
+  "layouts": [
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/layouts/gamescene"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/layouts/gameover"
+    }
+  ],
+  "externalEvents": [],
+  "eventsFunctionsExtensions": [
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/buttonstates"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/choose"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/panelspritebutton"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/panelspritecontinuousbar"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/dragcamerawithpointer"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/smoothcamera"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/spritetoggleswitch"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/shakeobject"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/hexagonalgrid"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/toolbar"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/floatingobject"
+    }
+  ],
+  "externalLayouts": [],
+  "externalSourceFiles": []
+}

@@ -1,0 +1,523 @@
+{
+  "author": "",
+  "category": "",
+  "extensionNamespace": "",
+  "fullName": "Toolbar",
+  "helpPath": "",
+  "iconUrl": "",
+  "name": "Toolbar",
+  "previewIconUrl": "",
+  "shortDescription": "Toolbar",
+  "version": "",
+  "description": "A toolbar to choose wich building to buy.",
+  "tags": [],
+  "authorIds": [],
+  "dependencies": [],
+  "eventsFunctions": [
+    {
+      "fullName": "",
+      "functionType": "Action",
+      "name": "onSceneLoaded",
+      "sentence": "",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "ModVarSceneTxt"
+              },
+              "parameters": [
+                "_ToolBar.SelectedToolName",
+                "=",
+                "\"None\""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "Update tool selection accordind to user inputs.",
+      "fullName": "Update tool selection",
+      "functionType": "Action",
+      "name": "UpdateToolSelection",
+      "sentence": "Update tool selection among _PARAM1_ according to user inputs",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "SpriteToggleSwitch::SpriteToggleSwitch::HasJustBeenUnchecked"
+              },
+              "parameters": [
+                "Button",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "ModVarSceneTxt"
+              },
+              "parameters": [
+                "_ToolBar.SelectedToolName",
+                "=",
+                "\"None\""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 109,
+            "g": 230,
+            "r": 255,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "Make buttons act as radio buttons."
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "SpriteToggleSwitch::SpriteToggleSwitch::HasJustBeenChecked"
+              },
+              "parameters": [
+                "Button",
+                ""
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "AjoutObjConcern"
+                  },
+                  "parameters": [
+                    "",
+                    "Button"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "SpriteToggleSwitch::SpriteToggleSwitch::HasJustBeenChecked"
+                      },
+                      "parameters": [
+                        "Button",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SpriteToggleSwitch::SpriteToggleSwitch::SetChecked"
+                      },
+                      "parameters": [
+                        "Button",
+                        "no",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 109,
+            "g": 230,
+            "r": 255,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "Handle dragging"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "MouseButtonPressed"
+              },
+              "parameters": [
+                "",
+                "Left"
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "SourisSurObjet"
+                  },
+                  "parameters": [
+                    "Button",
+                    "",
+                    "",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SpriteToggleSwitch::SpriteToggleSwitch::SetChecked"
+                  },
+                  "parameters": [
+                    "Button",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AjoutObjConcern"
+                  },
+                  "parameters": [
+                    "",
+                    "Button"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "SourisSurObjet"
+                      },
+                      "parameters": [
+                        "Button",
+                        "",
+                        "",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SpriteToggleSwitch::SpriteToggleSwitch::SetChecked"
+                      },
+                      "parameters": [
+                        "Button",
+                        "no",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 109,
+            "g": 230,
+            "r": 255,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "Select a tool"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "SpriteToggleSwitch::SpriteToggleSwitch::IsChecked"
+              },
+              "parameters": [
+                "Button",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "ModVarSceneTxt"
+              },
+              "parameters": [
+                "_ToolBar.SelectedToolName",
+                "=",
+                "Button.VariableString(BuildingName)"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 109,
+            "g": 230,
+            "r": 255,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "Hover effect"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Or"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "value": "SpriteToggleSwitch::SpriteToggleSwitch::IsHovered"
+                  },
+                  "parameters": [
+                    "Button",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SpriteToggleSwitch::SpriteToggleSwitch::IsChecked"
+                  },
+                  "parameters": [
+                    "Button",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "EnableEffect"
+              },
+              "parameters": [
+                "Button",
+                "\"Black\"",
+                "no"
+              ]
+            },
+            {
+              "type": {
+                "value": "EnableEffect"
+              },
+              "parameters": [
+                "Button",
+                "\"White\"",
+                "yes"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": true,
+                "value": "SpriteToggleSwitch::SpriteToggleSwitch::IsHovered"
+              },
+              "parameters": [
+                "Button",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "inverted": true,
+                "value": "SpriteToggleSwitch::SpriteToggleSwitch::IsChecked"
+              },
+              "parameters": [
+                "Button",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "EnableEffect"
+              },
+              "parameters": [
+                "Button",
+                "\"Black\"",
+                "yes"
+              ]
+            },
+            {
+              "type": {
+                "value": "EnableEffect"
+              },
+              "parameters": [
+                "Button",
+                "\"White\"",
+                "no"
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "description": "Tool bar button",
+          "name": "Button",
+          "supplementaryInformation": "SpriteToggleSwitch::SpriteToggleSwitch",
+          "type": "objectList"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "the selected tool name.",
+      "fullName": "Selected Tool",
+      "functionType": "ExpressionAndCondition",
+      "name": "SelectedTool",
+      "sentence": "the selected tool",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetReturnString"
+              },
+              "parameters": [
+                "VariableString(_ToolBar.SelectedToolName)"
+              ]
+            }
+          ]
+        }
+      ],
+      "expressionType": {
+        "supplementaryInformation": "[\"None\",\"House\",\"Mine\",\"Lumber\"]",
+        "type": "stringWithSelector"
+      },
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "Change the selected tool.",
+      "fullName": "Selected Tool",
+      "functionType": "Action",
+      "name": "SetTool",
+      "sentence": "Change the current tool to _PARAM2_ among _PARAM1_",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "ModVarSceneTxt"
+              },
+              "parameters": [
+                "_ToolBar.SelectedToolName",
+                "=",
+                "GetArgumentAsString(\"Tool\")"
+              ]
+            },
+            {
+              "type": {
+                "value": "SpriteToggleSwitch::SpriteToggleSwitch::SetChecked"
+              },
+              "parameters": [
+                "Button",
+                "no",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "VarObjetTxt"
+              },
+              "parameters": [
+                "Button",
+                "BuildingName",
+                "=",
+                "GetArgumentAsString(\"Tool\")"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SpriteToggleSwitch::SpriteToggleSwitch::SetChecked"
+              },
+              "parameters": [
+                "Button",
+                "yes",
+                ""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "description": "Button",
+          "name": "Button",
+          "supplementaryInformation": "SpriteToggleSwitch::SpriteToggleSwitch",
+          "type": "objectList"
+        },
+        {
+          "description": "",
+          "name": "Tool",
+          "supplementaryInformation": "[\"None\",\"House\",\"Mine\",\"Lumber\"]",
+          "type": "stringWithSelector"
+        }
+      ],
+      "objectGroups": []
+    }
+  ],
+  "eventsBasedBehaviors": [],
+  "eventsBasedObjects": []
+}
