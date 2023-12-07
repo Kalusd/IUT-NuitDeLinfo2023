@@ -93,7 +93,7 @@ gdjs.evtsExt__FloatingObject__FloatingObject.FloatingObject.prototype.doStepPost
 
 let isConditionTrue_0 = false;
 isConditionTrue_0 = false;
-{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(10139764);
+{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(15315964);
 }
 if (isConditionTrue_0) {
 gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__FloatingObject__FloatingObject.FloatingObject.prototype.doStepPostEventsContext.GDObjectObjects1);
